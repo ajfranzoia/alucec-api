@@ -5,8 +5,8 @@ module.exports = function(app, ctrl) {
 
   router.get('/unpaid-months', ctrl.unpaidMonths);
   router.get('/members-changes', ctrl.membersChanges);
+  router.get('/period-balance', ctrl.periodBalance);
   router.get('/payments-by-member', ctrl.paymentsByMember);
-  router.get('/month-balance', ctrl.monthBalance);
 
   app.use('/reports', router);
 };

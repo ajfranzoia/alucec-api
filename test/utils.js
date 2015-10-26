@@ -1,13 +1,16 @@
-var _ = require('lodash');
-    glob = require('glob');
-    mongoose = require('mongoose');
-    fixtures = require('pow-mongoose-fixtures');
-    jwt = require('jsonwebtoken');
-    config = require('../config/config');
+var _ = require('lodash'),
+    path = require('path'),
+    glob = require('glob'),
+    mongoose = require('mongoose'),
+    fixtures = require('pow-mongoose-fixtures'),
+    jwt = require('jsonwebtoken'),
+    config = require('../config/config'),
     express = require('express'),
-    supertest = require('supertest');
-    superagent = require('superagent');
+    supertest = require('supertest'),
+    superagent = require('superagent'),
     async = require('async');
+
+require('better-log').install({depth: 5});
 
 // Ensure the NODE_ENV is set to 'test'
 if (process.env.NODE_ENV != 'test') {
@@ -38,6 +41,13 @@ utils.cleanDb = function(cb) {
       done(null);
     })
   }, cb);
+}
+
+utils.loadFixture = function(file, cb) {
+  fixtures.load('./fixtures/' + file + '.js', mongoose, function(err, results) {
+    if (err) return cb(err);
+    cb();
+  });
 }
 
 utils.initApp = function(cb) {

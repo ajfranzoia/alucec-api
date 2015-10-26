@@ -68,16 +68,22 @@ var PaymentsService = {
         })
       },
 
-      // Update member's paid months
+      // Update member's paid months using $addToSet with sorting
       function(payment, _cb) {
-        if (member.paidMonths.indexOf(payment.month) === -1) {
-          member.paidMonths.push(payment.month);
-          member.save(function() {
-            _cb(null, payment);
-          });
-        } else {
-          _cb(null, payment);
-        }
+        Member.update(
+          { _id : member._id  },
+          { $addToSet :
+            {
+              paidMonths : {
+                $each: [ payment.month ],
+                $sort: 1
+              }
+            }
+          },
+          function(err, res) {
+            _cb(err, payment)
+          }
+        );
       }
     ], cb);
   },

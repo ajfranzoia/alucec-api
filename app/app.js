@@ -97,12 +97,17 @@ function AppErrorHandler(err, req, res, next) {
     };
   }
 
+  //console.log(err.stack);
+
   if (errorData) {
     res.status(errorData.status || err.status || 400);
     res.send(errorData);
   } else {
     // Unrecognized error
     res.status(err.status || 500);
-    res.send(err.message || err);
+    res.send({
+      name: err.name,
+      message: err.message
+    });
   }
 }

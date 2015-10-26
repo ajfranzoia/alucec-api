@@ -2,3 +2,4 @@
 --ui bdd
 --reporter nyan
 --recursive
+--timeout 5000

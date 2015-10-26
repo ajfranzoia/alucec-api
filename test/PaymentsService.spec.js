@@ -86,7 +86,7 @@ describe('PaymentsService', function () {
       if (err) return done(err);
 
       mongoose.model('Member').findById(member._id, function(err, res) {
-        res.toJSON().paidMonths.sort().should.deepEqual([201501, 201503, 201508]);
+        res.toJSON().paidMonths.should.deepEqual([201501, 201503, 201508]);
         done();
       });
     });
