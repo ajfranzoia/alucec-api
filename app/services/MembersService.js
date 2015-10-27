@@ -111,10 +111,10 @@ var MembersService = {
     Payment.find({member: member}).exec(function (err, payments) {
       if (err) return cb(err);
 
-      var member = member.toJSON();
+      member = member.toJSON();
       member.payments = payments;
 
-      return cb(member);
+      return cb(null, member);
     });
   },
 
