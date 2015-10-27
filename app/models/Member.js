@@ -28,7 +28,7 @@ memberSchema.plugin(uniqueValidator, { message: 'Error, expected {PATH} to be un
 memberSchema.plugin(mongoosePaginate);
 
 memberSchema.virtual('created').get(function(){
-  return this._id.getTimonthtamp();
+  return this._id.getTimestamp();
 });
 
 module.exports = mongoose.model('Member', memberSchema);
