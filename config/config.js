@@ -16,7 +16,7 @@ var config = {
   test: {
     root: rootPath,
     jwt: {
-      secret: '510560714356715613650',
+      secret: '975684563423244546',
       expiresInMinutes: 30,
     },
     port: 3000,
@@ -26,7 +26,7 @@ var config = {
   production: {
     root: rootPath,
     jwt: {
-      secret: '510560714356715613650',
+      secret: '467563542342343243',
       expiresInMinutes: 30,
     },
     port: 3000,
