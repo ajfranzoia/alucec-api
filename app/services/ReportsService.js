@@ -195,7 +195,7 @@ var ReportsService = {
     processPeriod(options);
 
     var getAgent = function(agents, _id) {
-       return _.find(agents, function(c) { return c._id.toString() === _id; });
+      return _.find(agents, function(c) { return c._id.toString() === _id.toString(); });
     };
 
     async.waterfall([
