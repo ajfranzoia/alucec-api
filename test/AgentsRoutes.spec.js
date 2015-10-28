@@ -73,6 +73,22 @@ describe('AgentsRoutes', function () {
       });
   });
 
+  it('should get agent data', function (done) {
+    utils
+      .request()
+      .get('/agents/' + agents[0]._id)
+      .setAuth()
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end(function(err, res) {
+        if (err) return done(err);
+
+        res.body.should.deepEqual(agents[0]);
+
+        done();
+      });
+  });
+
   it('should get all agents', function (done) {
     utils
       .request()

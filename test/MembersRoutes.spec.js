@@ -89,6 +89,39 @@ describe('MembersRoutes', function () {
       });
   });
 
+  it('should return correct member data', function (done) {
+    utils
+      .request()
+      .get('/members/' + member._id)
+      .setAuth()
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end(function(err, res) {
+        if (err) return done(err);
+
+        res.body.should.deepEqual({
+          _id: member._id,
+          alucecId: 1,
+          firstName: 'John',
+          lastName: 'Smith',
+          email: 'john@smith.com',
+          address: 'Street A 123',
+          phone: '12345678',
+          entry: {
+            date: '2015-01-01T00:00:00.000Z'
+          },
+          dni: 987654321,
+          observations: 'First member!',
+          agent: agent,
+          paidMonths: [],
+          payments: [],
+          __v: 0
+        });
+
+        done();
+      });
+  });
+
   it('should return correct next member id', function (done) {
     utils
       .request()
