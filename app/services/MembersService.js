@@ -44,14 +44,15 @@ var MembersService = {
 
     search = options.search;
     if (search) {
-      filter.$or = [
-        { firstName:  { $regex: new RegExp(options.search, 'i')} },
-        { lastName:  { $regex: new RegExp(options.search, 'i')} },
-      ];
+      filter.$or = [];
 
-      if (parseInt(search) === search) {
+      // If number, search in dni and alucecId as well
+      if (/^\+?(0|[1-9]\d*)$/.test(search)) {
         filter.$or.push({ dni: options.search });
         filter.$or.push({ alucecId: options.search });
+      } else {
+        filter.$or.push({ firstName:  { $regex: new RegExp(options.search, 'i')} });
+        filter.$or.push({ lastName:  { $regex: new RegExp(options.search, 'i')} });
       }
     }
 
