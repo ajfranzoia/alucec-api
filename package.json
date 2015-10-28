@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "NODE_ENV=test mocha test/*.spec.js",
-    "coverage": "rm -rf ./test/coverage && NODE_ENV=test istanbul cover _mocha --dir ./test/coverage"
+    "coverage": "rm -rf ./test/coverage && NODE_ENV=test istanbul cover _mocha --dir ./test/coverage",
+    "jshint": "find ./app ./test ./config -name '*.js' -print0 | xargs -0 ./node_modules/jshint/bin/jshint"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",

@@ -1,4 +1,4 @@
-var should = require('should');
+var should = require('should'),
     assert = require('assert'),
     mongoose = require('mongoose'),
     async = require('async'),

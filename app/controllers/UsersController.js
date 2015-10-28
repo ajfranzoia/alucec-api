@@ -3,7 +3,7 @@ var _ = require('lodash'),
     User = mongoose.model('User'),
     passport = require('passport'),
     jwt = require('jsonwebtoken'),
-    NotFoundError = require('../errors/NotFoundError');
+    NotFoundError = require('../errors/NotFoundError'),
     config = require('../../config/config');
 
 /**
@@ -30,7 +30,7 @@ var UsersController = {
    */
   login: function(req, res, next) {
     passport.authenticate('local', function(err, user, info) {
-      if (err) { return next(err) }
+      if (err) return next(err);
 
       if (!user) {
         return next(new NotFoundError('User not found'));
@@ -43,6 +43,6 @@ var UsersController = {
     })(req, res, next);
   },
 
-}
+};
 
 module.exports = UsersController;

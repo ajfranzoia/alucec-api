@@ -30,4 +30,4 @@ module.exports = function(app, config) {
   function loadController(name) {
     return require(path.join(config.paths.controllers, name + 'Controller'));
   }
-}
+};

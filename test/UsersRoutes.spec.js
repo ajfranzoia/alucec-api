@@ -68,7 +68,7 @@ describe('UsersRoutes', function() {
 
         res.body.should.have.property('token');
         done();
-      });;
+      });
   });
 
   it('should fail login with wrong credentials', function (done) {
@@ -90,7 +90,7 @@ describe('UsersRoutes', function() {
           message: 'User not found'
         });
         done();
-      });;
+      });
   });
 
 

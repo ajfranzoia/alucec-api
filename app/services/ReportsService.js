@@ -1,5 +1,6 @@
 var _ = require('lodash'),
     moment = require('moment'),
+    mongoose = require('mongoose'),
     Member = require('../models/Member'),
     Agent = require('../models/Agent'),
     Payment = require('../models/Payment'),
@@ -50,7 +51,7 @@ var ReportsService = {
     monthIterator = moment(options.from);
     while (monthIterator <= options.to) {
       monthsInPeriod.push(parseInt(monthIterator.format('YYYYMM')));
-      monthIterator.add(1, 'months')
+      monthIterator.add(1, 'months');
     }
     minimumPayments = monthsInPeriod.length - options.quantity;
 
@@ -136,8 +137,7 @@ var ReportsService = {
           .sort({lastName: 1, firstName: 1})
           .exec(cb);
       }
-    }
-    , cb);
+    }, cb);
   },
 
   /**
@@ -195,7 +195,7 @@ var ReportsService = {
     processPeriod(options);
 
     var getAgent = function(agents, _id) {
-       return _.find(agents, function(c) { return c._id.toString() == _id; })
+       return _.find(agents, function(c) { return c._id.toString() === _id; });
     };
 
     async.waterfall([
@@ -395,7 +395,7 @@ var ReportsService = {
       });
     });
   },
-}
+};
 
 /**
  * Auxiliar method to set utility values for period options.

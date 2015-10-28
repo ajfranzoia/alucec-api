@@ -349,7 +349,6 @@ describe('ReportsRoutes', function () {
   it('should return proper payments by member report', function(done) {
     async.series([
       function reportFor201509(cb) {
-        return cb();
         utils
           .request()
           .get('/reports/payments-by-member')

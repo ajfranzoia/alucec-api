@@ -1,6 +1,7 @@
 {
-  "curly": true,
+  "curly": false,
   "eqeqeq": true,
   "undef": true,
-  "node": true
+  "node": true,
+  "mocha": true
 }

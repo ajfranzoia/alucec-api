@@ -9,7 +9,7 @@ module.exports = function(app, config) {
 
   passport.serializeUser(User.serializeUser());
   passport.deserializeUser(User.deserializeUser());
-}
+};
 
 function findUserByTokenPayloadEmail(jwtPayload, done) {
   User.findOne({email: jwtPayload.email}, function(err, user) {

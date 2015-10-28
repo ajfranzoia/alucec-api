@@ -3,7 +3,7 @@ var _ = require('lodash'),
     mongoose = require('mongoose'),
     Payment = mongoose.model('Payment'),
     Member = mongoose.model('Member'),
-    ConfigService = require('../services/ConfigService')
+    ConfigService = require('../services/ConfigService'),
     PaymentError = require('../errors/PaymentError');
 
 /**
@@ -65,7 +65,7 @@ var PaymentsService = {
 
           data.amount = amount;
           Payment.create(data, _cb);
-        })
+        });
       },
 
       // Update member's paid months using $addToSet with sorting
@@ -81,7 +81,7 @@ var PaymentsService = {
             }
           },
           function(err, res) {
-            _cb(err, payment)
+            _cb(err, payment);
           }
         );
       }
@@ -107,7 +107,7 @@ var PaymentsService = {
         Member.findById(payment.member, function(err, res) {
           if (err) return cb(err);
           cb(null, payment, res);
-        })
+        });
       },
 
       // Remove paid month
@@ -137,6 +137,6 @@ var PaymentsService = {
     });
   },
 
-}
+};
 
 module.exports = PaymentsService;

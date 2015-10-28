@@ -51,6 +51,6 @@ var ReportsController = {
     });
   },
 
-}
+};
 
 module.exports = ReportsController;

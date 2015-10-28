@@ -48,7 +48,7 @@ var MembersController = {
     MembersService.create(req.body, function (err, member) {
       if (err) return next(err);
       res.send(member);
-    })
+    });
   },
 
   /**
@@ -95,6 +95,6 @@ var MembersController = {
     });
   },
 
-}
+};
 
 module.exports = MembersController;

@@ -76,6 +76,6 @@ var ConfigService = {
     return period.value;
   }
 
-}
+};
 
 module.exports = ConfigService;

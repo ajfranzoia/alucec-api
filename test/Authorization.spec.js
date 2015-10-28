@@ -27,7 +27,7 @@ describe('Authentication', function() {
     utils
       .request()
       .get('/')
-      .expect(200, done)
+      .expect(200, done);
   });
 
   it('returns 401 on secured route', function(done) {

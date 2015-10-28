@@ -34,7 +34,7 @@ var AgentsController = {
     Agent.create(req.body, function (err, agent) {
       if (err) return next(err);
       res.send(agent);
-    })
+    });
   },
 
   /**
@@ -44,7 +44,7 @@ var AgentsController = {
     Agent.findOneAndUpdate({_id: req.params.id}, req.body, {new: true}, function (err, agent) {
       if (err) return next(err);
       res.send(agent);
-    })
+    });
   },
 
   /**
@@ -57,6 +57,6 @@ var AgentsController = {
     });
   }
 
-}
+};
 
 module.exports = AgentsController;

@@ -36,7 +36,6 @@ describe('MembersRoutes', function () {
         }, function(err, results) {
           if (err) done(err);
           agent = JSON.parse(JSON.stringify(results.agent));
-          anotherAgent = JSON.parse(JSON.stringify(results.anotherAgent));
           cb();
         });
     }

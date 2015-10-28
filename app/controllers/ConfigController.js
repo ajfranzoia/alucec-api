@@ -29,6 +29,6 @@ var ConfigController = {
     });
   }
 
-}
+};
 
 module.exports = ConfigController;

@@ -49,7 +49,7 @@ var MembersService = {
         { lastName:  { $regex: new RegExp(options.search, 'i')} },
       ];
 
-      if (parseInt(search) == search) {
+      if (parseInt(search) === search) {
         filter.$or.push({ dni: options.search });
         filter.$or.push({ alucecId: options.search });
       }
@@ -156,6 +156,6 @@ var MembersService = {
     });
   }
 
-}
+};
 
 module.exports = MembersService;
