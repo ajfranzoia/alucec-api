@@ -13,6 +13,12 @@ var express = require('express'),
     AppError = require('./errors/AppError'),
     NotFoundError = require('./errors/NotFoundError');
 
+/**
+ * ALUCEC app initialization.
+ *
+ * @exports models/App
+ * @type {Function}
+ */
 module.exports = function(app, config) {
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;

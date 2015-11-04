@@ -9,6 +9,7 @@ var _ = require('lodash'),
 /**
  * Manages member's payments.
  *
+ * @exports services/PaymentsService
  * @type {Object}
  */
 var PaymentsService = {

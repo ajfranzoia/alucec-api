@@ -6,6 +6,7 @@ var _ = require('lodash'),
 /**
  * Members management service.
  *
+ * @exports services/MembersService
  * @type {Object}
  */
 var MembersService = {

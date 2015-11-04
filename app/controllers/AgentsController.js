@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 /**
  * Agents actions.
  *
+ * @exports controllers/AgentsController
  * @type {Object}
  */
 var AgentsController = {

@@ -3,6 +3,7 @@ var MembersService = require('../services/MembersService');
 /**
  * Members actions.
  *
+ * @exports controllers/MembersController
  * @type {Object}
  */
 var MembersController = {

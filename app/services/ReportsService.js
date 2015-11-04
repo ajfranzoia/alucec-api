@@ -6,6 +6,12 @@ var _ = require('lodash'),
     Payment = require('../models/Payment'),
     async = require('async');
 
+/**
+ * Generates ALUCEC reports data.
+ *
+ * @exports services/ReportsService
+ * @type {Object}
+ */
 var ReportsService = {
 
   /**
@@ -28,7 +34,7 @@ var ReportsService = {
    *   - quantity: number of unpaid months accepted
    *   - comparison: type of check against number of unpaid months (including quantity)
    *
-   * @param  {[type]}   options Report options
+   * @param  {Object}   options Report options
    * @param  {Function} cb      Callback
    */
   unpaidMonths: function(options, cb) {
@@ -100,7 +106,7 @@ var ReportsService = {
    *   - from: starting month (format: YYYYMM)
    *   - to: starting month (format: YYYYMM)
    *
-   * @param  {[type]}   options Report options
+   * @param  {Object}   options Report options
    * @param  {Function} cb      Callback
    */
   membersChanges: function(options, cb) {
@@ -180,7 +186,7 @@ var ReportsService = {
    *   - from: starting month (format: YYYYMM)
    *   - to: starting month (format: YYYYMM)
    *
-   * @param  {[type]}   options Report options
+   * @param  {Object}   options Report options
    * @param  {Function} cb      Callback
    */
   periodBalance: function(options, cb) {
@@ -338,7 +344,7 @@ var ReportsService = {
    *   - month: accounting month for payments (format: YYYYMM)
    *   - agent (optional): id for agent filter
    *
-   * @param  {[type]}   options Report options
+   * @param  {Object}   options Report options
    * @param  {Function} cb      Callback
    */
   paymentsByMember: function(options, cb) {

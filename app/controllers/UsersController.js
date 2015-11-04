@@ -9,6 +9,7 @@ var _ = require('lodash'),
 /**
  * Users actions.
  *
+ * @exports controllers/UsersController
  * @type {Object}
  */
 var UsersController = {

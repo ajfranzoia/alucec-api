@@ -3,6 +3,7 @@ var ReportsService = require('../services/ReportsService');
 /**
  * Reports actions.
  *
+ * @exports controllers/ReportsController
  * @type {Object}
  */
 var ReportsController = {

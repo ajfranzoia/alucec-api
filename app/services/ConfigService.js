@@ -6,6 +6,7 @@ var _ = require('lodash'),
 /**
  * Service that allows ALUCEC app config manipulation
  *
+ * @exports services/ConfigService
  * @type {Object}
  */
 var ConfigService = {

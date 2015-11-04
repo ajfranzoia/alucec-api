@@ -6,7 +6,8 @@
     "start": "node server.js",
     "test": "NODE_ENV=test mocha test/*.spec.js",
     "coverage": "rm -rf ./test/coverage && NODE_ENV=test istanbul cover _mocha --dir ./test/coverage",
-    "jshint": "find ./app ./test ./config -name '*.js' -print0 | xargs -0 ./node_modules/jshint/bin/jshint"
+    "jshint": "find ./app ./test ./config -name '*.js' -print0 | xargs -0 ./node_modules/.bin/jshint",
+    "generate-docs": "./node_modules/.bin/jsdoc --configure jsdoc.json --verbose"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
@@ -37,7 +38,9 @@
   },
   "devDependencies": {
     "istanbul": "^0.4.0",
+    "jsdoc": "^3.3.3",
     "jshint": "^2.8.0",
+    "minami": "^1.1.1",
     "should": "^7.1.0",
     "supertest": "^1.1.0"
   }

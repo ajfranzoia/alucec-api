@@ -1,5 +1,11 @@
 var util = require('util');
 
+/**
+ * Base App error class.
+ *
+ * @exports errors/AppError
+ * @constructor
+ */
 module.exports = function AppError(message) {
   if (Error.captureStackTrace) {
     Error.captureStackTrace(this, this.constructor);

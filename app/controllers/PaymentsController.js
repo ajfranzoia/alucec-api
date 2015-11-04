@@ -3,6 +3,7 @@ var PaymentsService = require('../services/PaymentsService');
 /**
  * Payments actions.
  *
+ * @exports controllers/PaymentsController
  * @type {Object}
  */
 var PaymentsController = {

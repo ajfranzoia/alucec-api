@@ -1,0 +1,16 @@
+{
+  "source": {
+    "include": ["app", "config", "package.json", "README.md"],
+    "includePattern": ".js$"
+  },
+  "plugins": [
+    "plugins/markdown"
+  ],
+	"opts": {
+    "destination": "./docs/",
+    "encoding": "utf8",
+    "private": true,
+    "recurse": true,
+	  "template": "node_modules/minami"
+	}
+}

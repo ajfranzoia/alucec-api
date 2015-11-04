@@ -3,6 +3,7 @@ var ConfigService = require('../services/ConfigService');
 /**
  * ALUCEC configuration actions.
  *
+ * @exports controllers/ConfigController
  * @type {Object}
  */
 var ConfigController = {

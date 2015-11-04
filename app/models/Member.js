@@ -4,6 +4,13 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     mongoosePaginate = require('mongoose-paginate');
 
+/**
+ * Member model.
+ * Represents a member of the organization.
+ *
+ * @exports models/Member
+ * @type {Object}
+ */
 var memberSchema = new Schema({
   alucecId: { type: Number, required: true, index: {unique: true} },
   lastName: { type: String, required: true },
