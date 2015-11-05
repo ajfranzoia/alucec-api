@@ -17,6 +17,7 @@ module.exports = function(app, ctrl) {
 
   router.get('/', ctrl.list);
   router.get('/nextAlucecId', ctrl.nextAlucecId);
+  router.get('/generateCoupons', ctrl.generateCoupons);
   router.get('/:id', ctrl.get);
   router.post('/', ctrl.create);
   router.put('/:id', ctrl.update);

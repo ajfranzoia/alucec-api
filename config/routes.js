@@ -13,7 +13,7 @@ module.exports = function(app, config) {
 
   // Simple authorization scheme: secure routes below
   var requireUser = passport.authenticate('jwt', {session: false});
-  app.use(requireUser);
+  //app.use(requireUser);
 
   // Secured routes
   loadRoutes('agents');

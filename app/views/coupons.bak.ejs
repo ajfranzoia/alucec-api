@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+
+		<% var n = 0; members.forEach(function(member) { %>
+
+		<div class="plancha-socio <%= n + 1 == members.length ? 'last' : '' %>">
+
+			<div class="header">
+				<div class="logo">
+					<%= image('logo.jpg', ['fullBase' => true]) %>
+				</div>
+				<div class="member-data">
+					<div class="lastName">
+						lastName: <%= member.lastName.toUpperCase() %>
+					</div>
+					<div class="firstName">
+						firstName: <%= member.firstName %>
+					</div>
+					<div class="address">
+						Dirección: <%= member.address.toUpperCase() %>
+					</div>
+					<div class="phone">
+						Teléfono: <%= member.phone.toUpperCase() %>
+					</div>
+				</div>
+				<div class="payment-data">
+					<div class="socio">
+						N° Socio: <%= member.alucecId %>
+					</div>
+					<div class="address">
+						Año: <%= moment().format('YYYY') %>
+					</div>
+					<div class="phone">
+						Cobrador: <%= member.agent.lastName.toUpperCase() %> <%= member.agent.firstName.toUpperCase() %>
+					</div>
+				</div>
+			</div>
+
+			<div style="clear:both"></div>
+
+			<%
+				var mes = moment(mesInicio + '01', 'YYYYMMDD').add('11', 'months');
+				var i = 12;
+				while (i) {
+			%>
+
+			<div class="talon-container">
+				<div class="talon">
+
+					<h2>ALUCEC - SAN PEDRO</h2>
+
+					<div class="socio-cuota-fecha">
+						<div class="socio"><span class="header-dato">N° Socio</span> <%= member.alucecId %></div>
+						<div class="cuota">
+							<span class="header-dato">Cuota</span>
+							<%= member.es_persona ? $this->App->valorCuota($periodos, mes.format('Ym')) : '$ ' . member.cuota %>
+						</div>
+						<div class="fecha">
+							<span class="header-dato">Mes</span>
+							<%= strtoupper(strftime('%b', strtotime('2000-' . mes.format('m') . '-01'))) %> / <%= mes.format('y') %>
+						</div>
+						<div style="clear: both"></div>
+					</div>
+
+					<div class="firstName-lastName">
+						<span class="lastName"><%= member.lastName.toUpperCase() %></span>
+						<span class="firstName"><%= member.firstName %></span>
+					</div>
+					<div class="firma"></div>
+
+					<div style="clear: both"></div>
+				</div>
+			</div>
+
+			<%
+					i--;
+					mes.subtract('-1', 'months');
+				}
+			%>
+
+		</div>
+
+	  <% n++; }) %>
+
+
+
+	</body>
+
+
+	<style type="text/css">
+
+	.plancha-socio {
+		font-family: Arial;
+		page-break-after: always;
+	}
+
+	.plancha-socio.last {
+		page-break-after: avoid;
+	}
+
+		.header {
+			height: 3.7cm;
+			font-weight: bold;
+			font-size: 16px;
+			line-height: 28px;
+			width: 19.57cm;
+			position: relative;
+		}
+
+		.header .logo {
+			height: 3.6cm;
+			width: 5.5cm;
+
+			float: left;
+		}
+
+			.header .logo img {
+				width: auto;
+				height: 88%;
+			}
+
+		.header .member-data {
+			margin-top: 0.2cm;
+			margin-left: 0.8cm;
+			float: left;
+			min-width: 8cm;
+		}
+
+			.header .member-data .firstName {
+				border-bottom: 1px solid #777;
+			}
+
+		.header .payment-data {
+			position: absolute;
+			top: 0.2cm;
+			right: 0.1cm;
+			text-align: right;
+
+			width: 5cm;
+		}
+
+
+		.talon-container {
+			width: 6.6cm;
+			height: 3.85cm;
+			float: left;
+				}
+
+		.talon {
+			padding: 0.2cm 0.35cm;
+			font-weight: bold;
+			position: relative;
+		}
+
+		.talon h2 {
+			font-size: 18px;
+			text-align: center;
+			text-decoration: underline;
+			font-style: italic;
+			margin: 6px 0 6px;
+		}
+
+			.talon .header-dato {
+				display: block;
+				color: #555;
+				font-size: 14px;
+				text-align: center;
+			}
+
+		.socio-cuota-fecha {
+			border-bottom: 1px solid #ccc;
+			padding-bottom: 0.1cm;
+		}
+
+			.socio-cuota-fecha .socio {
+				float: left;
+				width: 30%;
+				text-align: center;
+			}
+
+			.socio-cuota-fecha .cuota {
+				float: left;
+				padding-left: 2%;
+				width: 28%;
+				text-align: center;
+			}
+
+			.socio-cuota-fecha .fecha {
+				float: left;
+				padding-left: 2%;
+				width: 38%;
+				text-align: center;
+			}
+
+		.talon .firstName-lastName {
+			margin-top: 0.15cm;
+			float: left;
+		}
+
+			.talon .firstName-lastName .lastName {
+
+			}
+
+			.talon .firstName-lastName .firstName {
+				display: block;
+				font-size: 14px;
+			}
+
+		.talon .firma {
+			position: absolute;
+			bottom: 0.2cm;
+			right: 0.6cm;
+			border-bottom: 1px solid #555;
+			width: 2.5cm;
+		}
+	</style>
+</html>

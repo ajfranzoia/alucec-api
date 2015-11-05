@@ -156,6 +156,32 @@ var MembersService = {
       if (err) return cb(err);
       cb(null, member);
     });
+  },
+
+  /**
+   * Returns members availabe for coupons generation.
+   *
+   * @param  {Object} options Options
+   * @param  {Function} cb Callback
+   */
+  getMembersForCoupons: function(options, cb) {
+    var where = {
+      alucecId: {
+        $gte: options.fromAlucecId,
+        $lte: options.toAlucecId,
+      },
+      leaving: {
+        $exists : false
+      }
+    };
+
+    var sort = {alueceId: 1};
+
+    Member
+      .find()
+      .where(where)
+      .sort(sort)
+      .exec(cb);
   }
 
 };

@@ -1,4 +1,7 @@
-var MembersService = require('../services/MembersService');
+var MembersService = require('../services/MembersService'),
+    wkhtmltopdf = require('wkhtmltopdf'),
+    moment = require('moment'),
+    async = require('async');
 
 /**
  * Members actions.
@@ -93,6 +96,35 @@ var MembersController = {
     MembersService.removeLeaving(req.member, function (err, member) {
       if (err) return next(err);
       res.send(member);
+    });
+  },
+
+  /**
+   * Set member as non-leaving and active.
+   * Calls MembersService.removeLeaving()
+   */
+  generateCoupons: function (req, res, next) {
+    async.waterfall([
+      function(cb) {
+        MembersService.getMembersForCoupons(req.query, cb);
+      },
+      function(members, cb) {
+        var viewVars = {
+          moment: moment,
+          startingMonth: req.query.startingMonth,
+          members: members,
+          monthAmount: function() {
+            return 50;
+          }
+        };
+        res.render('coupons', viewVars, cb);
+      },
+      function(html, cb) {
+        return res.send(html);
+        wkhtmltopdf(html).pipe(res);
+      },
+    ], function(err, res) {
+      if (err) return next(err);
     });
   },
 

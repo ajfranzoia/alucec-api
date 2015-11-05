@@ -103,7 +103,7 @@ function AppErrorHandler(err, req, res, next) {
     };
   }
 
-  //console.log(err.stack);
+  console.log(err.stack);
 
   if (errorData) {
     res.status(errorData.status || err.status || 400);
