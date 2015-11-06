@@ -21,7 +21,7 @@ var ConfigService = {
       if (err) return cb(res);
 
       if (!res || _.isEmpty(res)) {
-        cb(new MissingConfigError('Can\'t read app config: it is empty!'));
+        return cb(new MissingConfigError('Can\'t read app config: it is empty!'));
       }
 
       var config = res.toJSON();
